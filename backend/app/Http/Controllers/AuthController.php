@@ -5,36 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Http\Requests\Auth\LoginRequest;
+use App\UseCases\Auth\LoginAction;
+use App\Http\Resources\Auth\LoginResource;
 
 class AuthController extends Controller
 {
     /**
      * Handle login using cookie-based session (Sanctum SPA).
      */
-    public function login(Request $request)
+    public function login(LoginRequest $request, LoginAction $action)
     {
-        $validated = $request->validate([
-            'type' => ['required', 'in:user'],
-            'email' => ['required', 'email'],
-            'password' => ['required', 'string'],
-        ]);
+        $user = $action($request);
 
-        $credentials = [
-            'email' => $validated['email'],
-            'password' => $validated['password'],
-        ];
-
-        if (! Auth::attempt($credentials, true)) {
+        if (! $user) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ])->status(401);
         }
 
-        $request->session()->regenerate();
-
-        return response()->json([
-            'message' => 'Logged in successfully',
-        ]);
+        return new LoginResource($user);
     }
 
     /**
@@ -68,4 +58,3 @@ class AuthController extends Controller
         ]);
     }
 }
-

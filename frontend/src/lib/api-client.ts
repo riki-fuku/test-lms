@@ -67,7 +67,7 @@ export class Http {
       },
       (error) => {
         if (error.response.status === 401) {
-          window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/renewal/user/login`
+          window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/user/login`
         }
 
         return Promise.reject(error)
