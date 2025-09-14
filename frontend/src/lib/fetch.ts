@@ -83,9 +83,9 @@ export async function http<T extends HttpDocument>(
         onAuthError()
       } else {
         if (isServerSide) {
-          redirect('/renewal/user/login')
+          redirect('/user/login')
         } else {
-          location.href = '/renewal/user/login'
+          location.href = '/user/login'
         }
       }
     } else {

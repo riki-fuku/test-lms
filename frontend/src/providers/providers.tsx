@@ -1,4 +1,3 @@
-import { UserProvider } from '@/features/user/contexts/userContext'
 import { LoadingProvider } from '@/hooks/useLoading'
 import { SnackbarProvider } from '@/hooks/useSnackbar'
 import { HeroUIProvider } from '@heroui/react'
@@ -13,9 +12,7 @@ export const Providers: FC<{ children: ReactNode }> = ({ children }) => {
         <HeroUIProvider locale='ja'>
           <ToastProvider />
           <SnackbarProvider>
-            <LoadingProvider>
-              <UserProvider>{children}</UserProvider>
-            </LoadingProvider>
+            <LoadingProvider>{children}</LoadingProvider>
           </SnackbarProvider>
         </HeroUIProvider>
       </AppRouterCacheProvider>

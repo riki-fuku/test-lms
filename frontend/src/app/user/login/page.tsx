@@ -1,6 +1,5 @@
-export default function Page() {
-  return (
-    // TODO: ログインページを作成
-    <h1>ログインページ</h1>
-  )
+import Client from './Client'
+
+export default async function Page() {
+  return <Client />
 }
