@@ -1,0 +1,101 @@
+:root{
+    --fc-today-bg-color: #fff;
+}
+
+.fc{
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/* テーブル全体のボーダー、上と左のボーダーを削除 */
+.fc-theme-standard .fc-scrollgrid{
+    border: none
+}
+
+/* 30分毎のボーダーを削除 */
+.fc .fc-timegrid-slot-minor {
+    border-top: none;
+}
+
+/* prev, nextナビゲーションのデザイン */
+.fc .fc-timegrid-axis{
+    visibility: hidden;
+}
+
+
+/* テーブルのボーダーの修正 */
+.fc-theme-standard td, .fc-theme-standard th{
+    border: 1px solid #EFEFEF
+}
+
+/* 時間軸のセル */
+.fc .fc-timegrid-slot:first-child{
+    border: none;
+    font-size: 10px;
+}
+
+.fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink{
+    transform: translateY(-50%);
+}
+
+.fc-timegrid-slot-label-cushion{
+    text-align: center;
+    width: 64px;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0;
+}
+
+/* イベントのデザイン */
+/* .fc-event {
+    border-color: transparent;
+    border: none;
+} */
+
+.fc-v-event{
+    border-color: transparent;
+    border: none;
+}
+.fc-event-border{
+    border: 2px dotted #328CE6;
+}
+
+.fc-event .fc-event-time{
+    margin-left: 5px;
+}
+
+.fc-event .fc-event-title{
+    margin-left: 5px;
+}
+
+/* 00:00を削除 */
+.fc-timegrid-slots > table > tbody > tr:first-child > td.fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink{
+    display: none;
+}
+
+.fc-day-sat{
+    color: #328CE6;
+}
+
+.fc-day-sun{
+    color: #E90000;
+}
+
+@media screen and (max-width: 1024px) {
+    .fc-timegrid-slot-label-cushion{
+        text-align: center;
+        width: fit-content;
+    }
+    
+    .fc-event .fc-event-time{
+        display: none;
+    }
+
+    .fc-event .fc-event-title{
+        font-size: 11px;
+    }
+}

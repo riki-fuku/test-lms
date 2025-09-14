@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    color: #424242;
+  }
+  /* reset input type text css */
+  /* input[type='text'],
+  input[type='password'] {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  } */
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+  }
+  input[type='time']::-webkit-calendar-picker-indicator {
+    width: 1.3em;
+    height: 1.3em;
+  }
+}
+
+/* timeデフォルトのアイコンを削除しinput要素を選択しただけで時間を選択できるようにする */
+/* input[type='time'] {
+  position: relative;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+input[type='date'] {
+  position: relative;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+} */
+
+.markdown pre {
+  @apply rounded-b;
+}
+
+.markdown video {
+  @apply w-full rounded;
+}
+
+.markdown details {
+  @apply my-5 bg-zinc-100 p-4;
+}
+
+.markdown details summary {
+  @apply cursor-pointer;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 4px;
+  height: 48px;
+  padding: 4px;
+}
+
+/* alert用のメニュー追加 */
+.alert[data-alert-type='warning'] {
+  background-color: #fff6e6;
+}
+
+.alert[data-alert-type='error'] {
+  background-color: #ffe6e6;
+}
+
+.alert[data-alert-type='info'] {
+  background-color: #e6ebff;
+}
+
+.alert[data-alert-type='success'] {
+  background-color: #e6ffe6;
+}
+
+[data-color-scheme='dark'] .alert[data-alert-type='warning'] {
+  background-color: #805d20;
+}
+
+[data-color-scheme='dark'] .alert[data-alert-type='error'] {
+  background-color: #802020;
+}
+
+[data-color-scheme='dark'] .alert[data-alert-type='info'] {
+  background-color: #203380;
+}
+
+[data-color-scheme='dark'] .alert[data-alert-type='success'] {
+  background-color: #208020;
+}
+
+.alert-icon-wrapper {
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+  margin-right: 12px;
+  height: 18px;
+  width: 18px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.alert-icon[data-alert-icon-type='warning'] {
+  color: #e69819;
+}
+
+.alert-icon[data-alert-icon-type='error'] {
+  color: #d80d0d;
+}
+
+.alert-icon[data-alert-icon-type='info'] {
+  color: #507aff;
+}
+
+.alert-icon[data-alert-icon-type='success'] {
+  color: #0bc10b;
+}
+
+.inline-content {
+  flex-grow: 1;
+}
+
+/* slash用のメニュー追加 */
+
+.slash-menu-item {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  box-shadow: 0 0 4px #dddddd;
+
+  cursor: pointer;
+}
+
+.slash-menu-item:hover,
+.slash-menu-item.selected {
+  background-color: lightgray;
+}
+
+/* google oauth button */
+.gsi-material-button {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  background-color: #f2f2f2;
+  background-image: none;
+  border: none;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #1f1f1f;
+  cursor: pointer;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 14px;
+  height: 40px;
+  letter-spacing: 0.25px;
+  outline: none;
+  overflow: hidden;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  -webkit-transition:
+    background-color 0.218s,
+    border-color 0.218s,
+    box-shadow 0.218s;
+  transition:
+    background-color 0.218s,
+    border-color 0.218s,
+    box-shadow 0.218s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  max-width: 400px;
+  min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+  height: 20px;
+  margin-right: 12px;
+  min-width: 20px;
+  width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  font-family: 'Roboto', arial, sans-serif;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+  -webkit-transition: opacity 0.218s;
+  transition: opacity 0.218s;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gsi-material-button:disabled {
+  cursor: default;
+  background-color: #ffffff61;
+}
+
+.gsi-material-button:disabled .gsi-material-button-state {
+  background-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+  opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+  opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+  -webkit-box-shadow:
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  box-shadow:
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+  background-color: #001d35;
+  opacity: 8%;
+}

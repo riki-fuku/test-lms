@@ -1,0 +1,6 @@
+export const APPLICATION_STATUS = {
+  PENDING: 1,
+  STAY: 2,
+  RESCHEDULING: 3,
+  COMPLETED: 4,
+}

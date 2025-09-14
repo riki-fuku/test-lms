@@ -1,0 +1,32 @@
+
+/* 日付部分の削除 */
+.today-schedule .fc .fc-col-header-cell{
+  display: none;
+}
+
+
+.today-schedule .fc .fc-theme-standard td {
+  border-right: none;
+}
+
+/* tdの縦の境界線を削除 */
+.today-schedule .fc td{
+  border-left: none;
+  border-right: none;
+}
+
+.today-schedule .fc td .fc-timegrid-slot-lane {
+  border-left: none;
+  border-right: none;
+}
+
+
+/* 時刻の表示位置、大きさの調整 */
+.today-schedule .fc-timegrid-slot-label-cushion {
+  text-align: end;
+  color: #8c8c8c
+}
+
+.today-schedule .fc-timegrid-slot-label-cushion {
+  width: fit-content;
+}

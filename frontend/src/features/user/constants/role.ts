@@ -1,0 +1,12 @@
+const ROLE = {
+  SYSTEM_USER: 1,
+  ADMIN_USER: 5,
+  CS_USER: 9,
+  QA_USER: 13,
+  COACH_USER: 17,
+  STUDENT_V2_USER: 20,
+  STUDENT_USER: 21,
+  NOTIFICATION_USER: 22,
+} as const
+
+export default ROLE

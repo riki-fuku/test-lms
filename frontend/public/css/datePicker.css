@@ -1,0 +1,44 @@
+.MuiDateCalendar-root{
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/*　今日の日付部分のデザイン */
+.MuiPickersDay-today{
+    background-color: #EFEFEF;
+    border: none;
+}
+
+.MuiPickersDay-today:not(.Mui-selected){
+    border: none;
+}
+
+/* hover時の日付のデザイン */
+.MuiPickersDay-root:hover{
+    background-color: rgba(50, 140, 230, 0.2);
+}
+
+/* 選択中の日付のデザインをカスタマイズ */
+.MuiButtonBase-root.Mui-selected {
+    background-color: #328CE6;
+}
+
+.MuiButtonBase-root.Mui-selected:hover{
+    background-color: #328CE6;
+}
+
+.MuiPickersCalendarHeader-label{
+    font-size: 14px;
+}
+
+.MuiPickersCalendarHeader-root{
+    padding: 0;
+}
+/* 
+.css-kg9q0s-MuiButtonBase-root-MuiIconButton-root-MuiPickersArrowSwitcher-button{
+    padding: 4px;
+} */
+
+.MuiPickersArrowSwitcher-button{
+    padding: 4px;
+}
