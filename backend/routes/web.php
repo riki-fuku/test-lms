@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Tenant routes (identified by path: /{tenant}/...)
+if (class_exists(\Stancl\Tenancy\Middleware\InitializeTenancyByPath::class)) {
+    Route::middleware([\Stancl\Tenancy\Middleware\InitializeTenancyByPath::class])
+        ->group(function () {
+            Route::get('/tenant/ping', function () {
+                return 'Tenant OK. Current tenant id: ' . tenant('id');
+            });
+        });
+}
+
+// Central app routes
+Route::get('/', fn () => view('welcome'));
