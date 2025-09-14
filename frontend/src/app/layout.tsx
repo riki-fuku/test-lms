@@ -1,8 +1,6 @@
-import Loading from '@/components/ui/Loading'
-import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from '@/config'
+import Loading from '@/components/elements/Loading'
 import '@/globals.css'
 import { Providers } from '@/providers/providers'
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })

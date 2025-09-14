@@ -1,9 +1,10 @@
-import cn from '@/hooks/cn'
+'use client'
 
-type DividerProps = {
-  className?: string
-}
+import type { DividerProps } from '@heroui/divider'
+import { Divider as HeroDivider } from '@heroui/divider'
 
-export default function Divider(props: DividerProps) {
-  return <div className={cn(`my-4 h-px w-full bg-bg-secondary`, props.className)} />
+type Props = DividerProps
+
+export function Divider({ ...props }: Props) {
+  return <HeroDivider {...props} />
 }
