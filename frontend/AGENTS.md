@@ -20,6 +20,10 @@
 ```
 frontend/
   src/
+    app/
+      users/
+        page.tsx       # サーバー側（データ取得など）
+        Client.tsx     # クライアント側（操作/状態管理）
     component/            # 共通/UI ライブラリのラッパーや再利用コンポーネント
       Button.tsx
       Card.tsx
@@ -30,10 +34,6 @@ frontend/
           types.ts
         components/
           UsersTable.tsx   # テーブルや API に依存（feature 配下）
-        pages/
-          list/
-            page.tsx       # サーバー側（データ取得など）
-            Client.tsx     # クライアント側（操作/状態管理）
 ```
 
 ## 実装ガイド
