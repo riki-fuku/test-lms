@@ -30,6 +30,10 @@ services:
       - DB_DATABASE=${DB_DATABASE:-laravel}
       - DB_USERNAME=${DB_USERNAME:-phper}
       - DB_PASSWORD=${DB_PASSWORD:-secret}
+      - TENANT_DB_HOST=${TENANT_DB_HOST:-db}
+      - TENANT_DB_PORT=${TENANT_DB_PORT:-3306}
+      - TENANT_DB_USERNAME=${TENANT_DB_USERNAME:-root}
+      - TENANT_DB_PASSWORD=${TENANT_DB_PASSWORD:-secret}
   web:
     build:
       context: .
@@ -71,7 +75,7 @@ services:
     ports:
       - "51081:80"
     environment:
-      PMA_USER: ${DB_USERNAME:-phper}
+      PMA_USER: ${DB_USERNAME:-root}
       PMA_PASSWORD: ${DB_PASSWORD:-secret}
       PMA_HOSTS: db
       PMA_PORTS: 3306

@@ -39,7 +39,7 @@ return [
      * データベーステナンシー設定。DatabaseTenancyBootstrapperで使用されます。
      */
     'database' => [
-        'central_connection' => 'central',
+        'central_connection' => env('DB_CONNECTION', 'laravel'),
 
         /**
          * 動的に作成されるテナントデータベース接続の「テンプレート」として使用される接続
@@ -191,7 +191,7 @@ return [
      * tenants:seedコマンドで使用されるパラメータ
      */
     'seeder_parameters' => [
-        '--class' => 'TenantSeeder', // テナントDB用シーダークラス
+        '--class' => 'DatabaseSeeder', // ルートシーダークラス
         // '--force' => true, // 本番環境でテナントデータベースをシードするには、これをtrueにする必要があります
     ],
 ];
