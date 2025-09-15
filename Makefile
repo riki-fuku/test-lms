@@ -73,6 +73,9 @@ fresh:
 	docker compose exec app php artisan migrate:fresh
 	docker compose exec app php artisan schema:dump
 	docker compose exec app php artisan db:seed
+	# tenancy for laravel
+	docker compose exec app php artisan tenants:migrate-fresh
+	docker compose exec app php artisan tenants:seed
 seed:
 	docker compose exec app php artisan db:seed
 renewal-seed:
