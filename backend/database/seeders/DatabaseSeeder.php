@@ -12,8 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            DemoUserSeeder::class,
-        ]);
+        // セントラルDB用の初期データがあればここで呼び出してください。
     }
 }
