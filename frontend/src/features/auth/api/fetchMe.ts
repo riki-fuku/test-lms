@@ -12,9 +12,9 @@ type MeResponse = {
 type MeHttpDocument = HttpDocument<undefined, undefined, undefined, MeResponse>
 
 export default function fetchMe(
+  tenantId: string,
   params?: MeHttpDocument['params'],
   options?: MeHttpDocument['options'],
 ) {
-  return http<MeHttpDocument>('/api/user/me', 'GET', params, options)
+  return http<MeHttpDocument>(`/api/t/${tenantId}/user/me`, 'GET', params, options)
 }
-
