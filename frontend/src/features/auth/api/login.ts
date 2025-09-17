@@ -15,8 +15,9 @@ type LoginHttpDocument = HttpDocument<
 >
 
 export default function login(
+  tenantId: string,
   params: LoginHttpDocument['params'],
   options?: LoginHttpDocument['options'],
 ) {
-  return http<LoginHttpDocument>('/api/login', 'POST', params, options)
+  return http<LoginHttpDocument>(`/api/t/${tenantId}/login`, 'POST', params, options)
 }

@@ -2,29 +2,15 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import login from '@/features/auth/api/login'
 
 export default function Client() {
   const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [tenantId, setTenantId] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setError(null)
-    setLoading(true)
-    try {
-      await login({
-        requestBody: { type: 'user', email, password },
-      })
-      router.push('/user/top')
-    } catch (err) {
-      setError('メールアドレスまたはパスワードが正しくありません')
-    } finally {
-      setLoading(false)
-    }
+    if (!tenantId) return
+    router.push(`/t/${encodeURIComponent(tenantId)}/user/login`)
   }
 
   return (
@@ -42,15 +28,15 @@ export default function Client() {
           background: 'white',
         }}
       >
-        <h1 style={{ fontSize: 20, fontWeight: 700, margin: 0 }}>ログイン</h1>
+        <h1 style={{ fontSize: 20, fontWeight: 700, margin: 0 }}>テナントを選択</h1>
         <label style={{ display: 'grid', gap: 6 }}>
-          <span style={{ fontSize: 12, color: '#6b7280' }}>メールアドレス</span>
+          <span style={{ fontSize: 12, color: '#6b7280' }}>テナントID</span>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={tenantId}
+            onChange={(e) => setTenantId(e.target.value)}
             required
-            placeholder="user@example.com"
+            placeholder="例: tenant_123"
             style={{
               padding: '10px 12px',
               borderRadius: 6,
@@ -58,43 +44,21 @@ export default function Client() {
             }}
           />
         </label>
-        <label style={{ display: 'grid', gap: 6 }}>
-          <span style={{ fontSize: 12, color: '#6b7280' }}>パスワード</span>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="••••••••"
-            style={{
-              padding: '10px 12px',
-              borderRadius: 6,
-              border: '1px solid #d1d5db',
-            }}
-          />
-        </label>
-        {error && (
-          <div style={{ color: '#b91c1c', fontSize: 12 }} role="alert">
-            {error}
-          </div>
-        )}
         <button
           type="submit"
-          disabled={loading}
           style={{
             padding: '10px 12px',
             borderRadius: 6,
             border: '1px solid transparent',
-            background: loading ? '#9ca3af' : '#2563eb',
+            background: '#2563eb',
             color: 'white',
             fontWeight: 600,
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: 'pointer',
           }}
         >
-          {loading ? 'ログイン中…' : 'ログイン'}
+          ログイン画面へ
         </button>
       </form>
     </div>
   )
 }
-

@@ -83,9 +83,12 @@ export async function http<T extends HttpDocument>(
         onAuthError()
       } else {
         if (isServerSide) {
+          // Server-side: no access to current path; fallback to non-tenant login
           redirect('/user/login')
         } else {
-          location.href = '/user/login'
+          // Client-side: try to preserve tenant from current path
+          const loginPath = resolveTenantLoginPath()
+          location.href = loginPath
         }
       }
     } else {
@@ -182,6 +185,22 @@ async function handleError() {
     description: 'エラーが発生しました',
     color: 'danger',
   })
+}
+
+/**
+ * Derive tenant-aware login path from current location if possible.
+ */
+function resolveTenantLoginPath(): string {
+  try {
+    const path = window.location?.pathname || ''
+    const m = path.match(/\/t\/([^/]+)/)
+    if (m && m[1]) {
+      return `/t/${encodeURIComponent(m[1])}/user/login`
+    }
+  } catch (_) {
+    // ignore
+  }
+  return '/user/login'
 }
 
 /**
