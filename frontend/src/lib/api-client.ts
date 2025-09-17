@@ -67,7 +67,14 @@ export class Http {
       },
       (error) => {
         if (error.response.status === 401) {
-          window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}/user/login`
+          const path = (() => {
+            try {
+              const m = window.location?.pathname?.match(/\/t\/([^/]+)/)
+              if (m && m[1]) return `/t/${encodeURIComponent(m[1])}/user/login`
+            } catch (_) {}
+            return '/user/login'
+          })()
+          window.location.href = `${process.env.NEXT_PUBLIC_APP_URL}${path}`
         }
 
         return Promise.reject(error)
