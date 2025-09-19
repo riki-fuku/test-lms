@@ -4,6 +4,6 @@ export type Pagination = {
   currentPage: number
   lastPage: number
   path: string
-  from: string
-  to: string
+  from: number | null
+  to: number | null
 }
