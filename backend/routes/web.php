@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TenantTopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tenants/{tenant}', TenantTopController::class)
+    ->where('tenant', '[A-Za-z0-9_-]+')
+    ->name('tenants.top');

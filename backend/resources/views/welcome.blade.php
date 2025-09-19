@@ -118,6 +118,15 @@
                     </div>
                 </div>
 
+                <div class="mt-16 grid gap-4">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Tenant Dashboards</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">以下のサンプルテナントからユーザ一覧を確認できます。</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="{{ route('tenants.top', ['tenant' => 'coachtech']) }}" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500">coachtech</a>
+                        <a href="{{ route('tenants.top', ['tenant' => 'mazidesign']) }}" class="px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500">mazidesign</a>
+                    </div>
+                </div>
+
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                     <div class="text-center text-sm sm:text-left">
                         &nbsp;
