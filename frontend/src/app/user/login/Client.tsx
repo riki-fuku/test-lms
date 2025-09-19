@@ -10,7 +10,7 @@ export default function Client() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!tenantId) return
-    router.push(`/t/${encodeURIComponent(tenantId)}/user/login`)
+    router.push(`/t/${encodeURIComponent(tenantId)}/user/top`)
   }
 
   return (
