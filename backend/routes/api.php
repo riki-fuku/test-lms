@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use Stancl\Tenancy\Middleware\InitializeTenancyByPath;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
@@ -34,16 +33,10 @@ Route::prefix('t/{tenant}')
         InitializeTenancyByPath::class,
         PreventAccessFromCentralDomains::class,
     ])->group(function () {
-        // Auth routes (tenant context)
-        Route::post('/login', [AuthController::class, 'login']);
-        Route::post('/logout', [AuthController::class, 'logout']);
-
         // Authenticated user (tenant context)
         Route::middleware('auth:sanctum')->group(function () {
             Route::get('/user', function (Request $request) {
                 return $request->user();
             });
-
-            Route::get('/user/me', [AuthController::class, 'me']);
         });
     });
