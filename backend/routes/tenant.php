@@ -36,16 +36,14 @@ Route::prefix('api/t/{tenant}')
         InitializeTenancyByPath::class,
         PreventAccessFromCentralDomains::class,
     ])->group(function () {
-        Route::middleware('auth:sanctum')->group(function () {
-            Route::get('/users', static function () {
-                $users = User::query()
-                    ->select(['id', 'name', 'email'])
-                    ->orderBy('name')
-                    ->get();
+        Route::get('/users', static function () {
+            $users = User::query()
+                ->select(['id', 'name', 'email'])
+                ->orderBy('name')
+                ->get();
 
-                return response()->json([
-                    'data' => $users,
-                ]);
-            });
+            return response()->json([
+                'data' => $users,
+            ]);
         });
     });

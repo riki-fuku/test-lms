@@ -28,15 +28,15 @@ Route::get('/sanctum/csrf-cookie', [CsrfCookieController::class, 'show']);
 | This allows the frontend to specify the tenant id in the path and have
 | tenancy bootstrapped via InitializeTenancyByPath middleware.
 */
-Route::prefix('t/{tenant}')
-    ->middleware([
-        InitializeTenancyByPath::class,
-        PreventAccessFromCentralDomains::class,
-    ])->group(function () {
-        // Authenticated user (tenant context)
-        Route::middleware('auth:sanctum')->group(function () {
-            Route::get('/user', function (Request $request) {
-                return $request->user();
-            });
-        });
-    });
+// Route::prefix('t/{tenant}')
+//     ->middleware([
+//         InitializeTenancyByPath::class,
+//         PreventAccessFromCentralDomains::class,
+//     ])->group(function () {
+//         // Authenticated user (tenant context)
+//         Route::middleware('auth:sanctum')->group(function () {
+//             Route::get('/user', function (Request $request) {
+//                 return $request->user();
+//             });
+//         });
+//     });

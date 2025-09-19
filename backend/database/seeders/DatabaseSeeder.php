@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // セントラルDB用の初期データがあればここで呼び出してください。
+        $this->call([
+            TenantSeeder::class,
+        ]);
     }
 }
