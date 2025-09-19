@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Laravel\Sanctum\Http\Controllers\CsrfCookieController;
 
 /*
@@ -30,4 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::get('/user/me', [AuthController::class, 'me']);
+    Route::get('/users', [UserController::class, 'index']);
 });

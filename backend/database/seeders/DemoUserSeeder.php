@@ -17,6 +17,14 @@ class DemoUserSeeder extends Seeder
                 'password' => Hash::make('password'),
             ]);
         }
+
+        $targetUserCount = 100;
+        $existingCount = User::count();
+
+        if ($existingCount < $targetUserCount) {
+            $usersToCreate = $targetUserCount - $existingCount;
+
+            User::factory($usersToCreate)->create();
+        }
     }
 }
-

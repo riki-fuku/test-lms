@@ -19,7 +19,7 @@ export default function Client() {
       await login({
         requestBody: { type: 'user', email, password },
       })
-      router.push('/user/top')
+      router.push('/user/users')
     } catch (err) {
       setError('メールアドレスまたはパスワードが正しくありません')
     } finally {
@@ -97,4 +97,3 @@ export default function Client() {
     </div>
   )
 }
-

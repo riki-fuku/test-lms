@@ -3,10 +3,9 @@ import type { User } from '@/features/user/types/User'
 import type { HttpDocument } from '@/lib/fetch'
 import { http } from '@/lib/fetch'
 
-export type FetchUsersHttpDocument = HttpDocument<
-  { workspaceId: string },
+type FetchUsersHttpDocument = HttpDocument<
+  undefined,
   {
-    keyword?: string
     page?: number
   },
   undefined,
@@ -14,11 +13,11 @@ export type FetchUsersHttpDocument = HttpDocument<
 >
 
 export async function fetchUsers(
-  params: FetchUsersHttpDocument['params'],
+  params?: FetchUsersHttpDocument['params'],
   options?: FetchUsersHttpDocument['options'],
 ) {
   return await http<FetchUsersHttpDocument>(
-    `/api/workspaces/:workspaceId/users`,
+    '/api/users',
     'GET',
     params,
     options,
